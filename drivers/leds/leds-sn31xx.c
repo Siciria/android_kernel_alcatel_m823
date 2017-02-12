@@ -609,7 +609,7 @@ static int sn31xx_probe(struct i2c_client *client,
     }
 
 	ret= sysfs_create_file (&led->cdev_led1g.dev->kobj, &dev_attr_blink.attr);
-#if (!defined CONFIG_TCT_8X16_IDOL3 )&&(!defined CONFIG_TCT_8X16_IDOL347)/*[BUGFIX]-Mod by TCTNB.XQJ,PR-817507 2014/10/23,not need in idol3*/
+#if 0 //(!defined CONFIG_TCT_8X16_IDOL3 )&&(!defined CONFIG_TCT_8X16_IDOL347)/*[BUGFIX]-Mod by TCTNB.XQJ,PR-817507 2014/10/23,not need in idol3*/
 	qnnp_lbc_enable_led(0);
 #endif
     return 0;
@@ -624,7 +624,7 @@ exit2:
     sn31xx_power_init(led, 0);
 exit1:
 //    kfree(led);
-#if (!defined CONFIG_TCT_8X16_IDOL3 )&&(!defined CONFIG_TCT_8X16_IDOL347) /*[BUGFIX]-Mod by TCTNB.XQJ,PR-817507 2014/10/23,not need in idol3*/
+#if 0 //(!defined CONFIG_TCT_8X16_IDOL3 )&&(!defined CONFIG_TCT_8X16_IDOL347) /*[BUGFIX]-Mod by TCTNB.XQJ,PR-817507 2014/10/23,not need in idol3*/
     qnnp_lbc_enable_led(1);
 #endif
     return ret;

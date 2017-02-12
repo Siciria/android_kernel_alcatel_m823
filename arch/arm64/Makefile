@@ -79,6 +79,9 @@ endif
 ifdef CONFIG_TCT_8X16_IDOL3
 	$(Q)$(MAKE) $(build)=$(boot)/dts/idol3 dtbs
 endif
+ifdef CONFIG_TCT_8X16_M823_ORANGE
+	$(Q)$(MAKE) $(build)=$(boot)/dts/idol3 dtbs
+endif
 PHONY += vdso_install
 vdso_install:
 	$(Q)$(MAKE) $(build)=arch/arm64/kernel/vdso $@

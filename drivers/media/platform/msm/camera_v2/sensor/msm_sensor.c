@@ -37,7 +37,7 @@
 #include "s5k3m2_m823_orange_otp.h"
 #include "ov5670_m823_orange_otp.h"
 /*Tianliang.Zhang 2015/06/30 add for defect 391074*/
-extern int tct_devices_name_set(int tct_index, char *dev_name);
+//extern int tct_devices_name_set(int tct_index, char *dev_name);
 #endif
 //[PLATFORM]-Add-END by TCTSZ. Zkx
 
@@ -799,22 +799,22 @@ static int TCT_update_OTP(struct msm_sensor_ctrl_t *s_ctrl)
 	if(!strcmp(s_ctrl->sensordata->sensor_name, "ov5670_m823_orange")){
 		pr_err("OTP: ov5670_m823_orange\n");
 		ov5670_m823_orange_otp_config(s_ctrl);
-		tct_devices_name_set(3,"QTECH");
+		//tct_devices_name_set(3,"QTECH");
 	}
 	else if(!strcmp(s_ctrl->sensordata->sensor_name, "imx214_m823_orange")){
 		pr_err("OTP: imx214_m823_orange\n");
 		 imx214_m823_orange_otp_config(s_ctrl);
-		 tct_devices_name_set(2,"SEMCO");
+		 //tct_devices_name_set(2,"SEMCO");
 	}
 	else if(!strcmp(s_ctrl->sensordata->sensor_name, "s5k5e2_m823_orange")){
 		pr_err("OTP: s5k5e2_m823_orange\n");
 		 s5k5e2_m823_orange_otp_config(s_ctrl->sensor_i2c_client);
-		 tct_devices_name_set(3,"SUNNY");
+		 //tct_devices_name_set(3,"SUNNY");
 	}
 	else if(!strcmp(s_ctrl->sensordata->sensor_name, "s5k3m2_m823_orange")){
 		pr_err("OTP: s5k3m2_m823_orange\n");
 		 s5k3m2_m823_orange_otp_config(s_ctrl);
-		 tct_devices_name_set(2,"TRULY");
+		 //tct_devices_name_set(2,"TRULY");
 	}	
 #endif 
 

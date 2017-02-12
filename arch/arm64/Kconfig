@@ -632,6 +632,12 @@ config TCT_8X16_IDOL3
         help
           Support for the TCT IDOL3 device.
 
+config TCT_8X16_M823_ORANGE
+        depends on ARCH_MSM8916
+        bool "MSM8916 M823"
+        help
+          Support for the TCT M823 device.
+
 config SYSVIPC_COMPAT
 	def_bool y
 	depends on COMPAT && SYSVIPC

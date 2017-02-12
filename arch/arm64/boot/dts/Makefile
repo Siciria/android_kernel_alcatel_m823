@@ -15,7 +15,9 @@ endif
 ifdef CONFIG_TCT_8X16_IDOL347
 subdir- := idol347
 endif
-
+ifdef CONFIG_TCT_8X16_M823_ORANGE
+subdir- := idol3
+endif
 
 DTB_NAMES := $(subst $\",,$(CONFIG_BUILD_ARM64_APPENDED_DTB_IMAGE_NAMES))
 ifneq ($(DTB_NAMES),)

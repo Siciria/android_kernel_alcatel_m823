@@ -98,6 +98,9 @@ obj-$(CONFIG_TOUCHSCREEN_FT5X36_IDOL3)		+= ft5x36_idol3/
 obj-$(CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_IDOL3)          += s7020_idol3/
 #ADD-EDD by xingchen.wang 2015/01/29.
 endif
+ifdef CONFIG_TCT_8X16_M823_ORANGE 
+obj-$(CONFIG_TOUCHSCREEN_FT5436)	+= tp_FT5436/
+endif
 #[PLATFORM]-Add-END by TCTNB.ZXZ
 # modify(add) by junfeng.zhou.sz for [TP driver development (1st source)] with PR721418 begin . 20140714 
 obj-$(CONFIG_TOUCHSCREEN_MSG21XX)		+= msg21xx/

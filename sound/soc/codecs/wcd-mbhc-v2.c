@@ -1471,7 +1471,7 @@ static int wcd_mbhc_get_button_mask(struct wcd_mbhc *mbhc)
 		mask = SND_JACK_BTN_1;
 		break;
 #endif
-#if !defined(CONFIG_TCT_8X16_IDOL347) &&  !defined(CONFIG_TCT_8X16_IDOL3)
+#if 0 //defined(CONFIG_TCT_8X16_IDOL3) && defined(CONFIG_TCT_8X16_IDOL347)
 	case 1:
 	    mask = SND_JACK_BTN_1;
 		break;
