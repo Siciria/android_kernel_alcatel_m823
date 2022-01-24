@@ -16,7 +16,7 @@
 &soc {
 	i2c@78b9000 { /* BLSP1 QUP5 */
 /*[PLATFORM]-MOD BGEIN by TCTNB.YQJ,11/25/2013,FR-523019,FT5406  tp development,i2c address to 0x38.*/
-                     focaltech@38 {
+        focaltech@38 {
 			compatible = "focaltech,5436";
 			reg = <0x38>;
 			interrupt-parent = <&msm_gpio>;
@@ -49,69 +49,7 @@
 			focaltech,fw-delay-era-flsh-ms = <2000>;
 			//focaltech,fw-auto-cal;
 			focaltech,ignore-id-check;
-               };
-/*[PLATFORM]-END by TCTNB.YQJ*/
-/*ADD-BEGIN by xingchen.wang 2015/01/29 CR.874750 idol3_5.5 2nd source TP development. */
-		synaptics@20 {
-			compatible = "synaptics,dsx";
-			reg = <0x20>;
-			interrupt-parent = <&msm_gpio>;
-			interrupts = <13 0x2008>;
-			vdd-supply = <&pm8916_l17>;
-			vcc_i2c-supply = <&pm8916_l6>;
-			/* pins used by touchscreen */
-			pinctrl-names = "pmx_ts_active","pmx_ts_suspend";
-			pinctrl-0 = <&ts_int_active &ts_reset_active>;
-			pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
-			synaptics,display-coords = <0 0 1080 1920>;
-			synaptics,panel-coords = <0 0 1080 1920>;
-/*
-			synaptics,fw-image-name ="PR45450020.img";
-*/
-			synaptics,irq-gpio = <&msm_gpio 13 0x2008>;
-			synaptics,reset-gpio = <&msm_gpio 12 0x0>;
-			synaptics,i2c-pull-up;
-			synaptics,power-down;
-			synaptics,disable-gpios;
-			synaptics,bus-reg-name = "vcc_i2c";
-			synaptics,irq-on-state = <0>;
-			synaptics,irq-flags = <0x2008>; /* IRQF_ONESHOT | IRQF_TRIGGER_LOW */
-/*ADD-BEGIN by bin.su 2015/03/18 CR927276,2nd source TP development.*/
-			synaptics,reset-on-state = <0>;
-			synaptics,reset-active-ms = <20>;
-/*ADD-EDD by bin.su 2015/03/18. */
-			synaptics,power-delay-ms = <160>;
-			synaptics,reset-delay-ms = <100>;
-//			synaptics,max-y-for-2d = <800>; /* remove if no virtual buttons */
-//			synaptics,vir-button-codes = <102 100 900 100 60 158 300 900 100 60>;
-		};
-/*ADD-EDD by xingchen.wang 2015/01/29. */
-/*
-		synaptics@20 {
-			compatible = "synaptics,dsx";
-			reg = <0x20>;
-			interrupt-parent = <&msm_gpio>;
-			interrupts = <13 0x2008>;
-			avdd-supply = <&pm8916_l17>;
-			vdd-supply = <&pm8916_l6>;
-			// pins used by touchscreen
-			pinctrl-names = "pmx_ts_active","pmx_ts_suspend","pmx_ts_suspend";
-			pinctrl-0 = <&ts_int_active &ts_reset_active>;
-			pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
-			pinctrl-2 = <&ts_release>;
-			synaptics,irq-gpio = <&msm_gpio 13 0x2008>;
-			synaptics,reset-gpio = <&msm_gpio 12 0x0>;
-			synaptics,i2c-pull-up;
-			synaptics,power-down;
-			synaptics,disable-gpios;
-			synaptics,display-coords = <0 0 1079 1919>;
-			synaptics,panel-coords = <0 0 1079 2084>;
-			// Underlying clocks used by secure touch
-			clocks = <&clock_gcc clk_gcc_blsp1_ahb_clk>,
-			 <&clock_gcc clk_gcc_blsp1_qup5_i2c_apps_clk>;
-			clock-names = "iface_clk", "core_clk";
-		};
-*/
+        };
 	};
 
 	gen-vkeys {
@@ -156,20 +94,7 @@
 	i2c@78b6000 { /* BLSP1 QUP2 */
 
 /*[BUFFIX]-Mod(move)-bgein  by huangshenglin@hoperun, task-1175912 ,1175905 , 1175899 ,1175896 2015/12/17,finish sensors drirver*/
-		kionix@f {
-			compatible = "kionix,kxtj2-1009";
-			reg = <0x0e>;
-			interrupt-parent = <&msm_gpio>;
-			interrupts = <114 0x2002>;
-			vdd-supply = <&pm8916_l17>;
-			vio-supply = <&pm8916_l6>;
-			kionix,min_interval = <5>;
-			kionix,poll_interval = <100>;
-			kionix,accel_direction = <4>;/*[BUFFIX]-Mod by TCTNB.XQJ, PR-852110,2014/11/25,slove gsensor  right data*/
-			kionix,accel_irq_use_drdy = <0>;
-			kionix,accel_res = <12>;
-			kionix,accel_g_range = <2>;
-		};
+
 		akm@c {
 			compatible = "ak,ak09911";
 			reg = <0x0c>;
@@ -178,8 +103,9 @@
 			pinctrl-1 = <&akm_sleep>;
 			vdd-supply = <&pm8916_l17>;
 			vio-supply = <&pm8916_l6>;
-			akm,layout = <0x4>;/*[BUFFIX]-Mod by TCTNB.XQJ, PR-851842,2014/11/25,slove compass direction ok*/
-			akm,gpio_rstn = <&msm_gpio 100 0x0>;
+			//akm,layout = <0x4>;/*[BUFFIX]-Mod by TCTNB.XQJ, PR-851842,2014/11/25,slove compass direction ok*/
+			akm,layout = <0x2>;
+			akm,gpio_rstn = <&msm_gpio 74 0x0>;
 			akm,auto-report;
 		};
                 tsl2772@39 {
@@ -204,10 +130,31 @@
       bosch@68 {
                         compatible = "bosch,bmg160";
                         reg = <0x68>;
-                        bmg,place = <0x5>;/*[BUFFIX]-Mod by TCTNB.XQJ, PR-916361,2015/1/30,slove gyrp direction ok*/
+                        bmg,place = <0x6>;/*[BUFFIX]-Mod by TCTNB.XQJ, PR-916361,2015/1/30,slove gyrp direction ok*/
                         vdd-supply = <&pm8916_l17>;
                         vio-supply = <&pm8916_l6>;
                 };
+			bma2x2@18 {
+				compatible = "bosch,bma2x2";
+				reg = <0x18>;
+				pinctrl-names = "default";
+				pinctrl-0 = <&bma2x2_int1_default &bma2x2_int2_default>;
+				interrupt-parent = <&msm_gpio>;
+				interrupts = <163 0x2002>;
+				vdd-supply = <&pm8916_l6>;
+				vio-supply = <&pm8916_l6>;
+				bosch,init-interval = <200>;
+				bosch,place = <0>;
+				bosch,gpio-int1 = <&msm_gpio 115 0x2002>;
+				bosch,gpio-int2 = <&msm_gpio 114 0x2002>;
+			};
+			
+			ktd20@30 {
+				compatible = "ktd20,ktd20xx";
+				reg = <0x30>;
+				vio-supply = <&pm8916_l6>;
+				ktd20,en-gpio = <&msm_gpio 108 0>;
+			};
 	};
 /*[BUFFIX]-End- by huangshenglin@hoperun*/
 /* [PLATFORM]-Add-BEGIN by TCTNB.XQJ, RR-851116, 2014/10/18, add for idol3  */
@@ -272,22 +219,13 @@
 
 	};
 /*NB.THW 2014/11/17 add for FR.789207*/
-	i2c@78b8000 { /* BLSP1 QUP4 */
+	i2c@78b7000 { /* BLSP1 QUP3 */
 	        /*two smartPA, only provide one interface i2c addr 0x34 0x36*/
 	        tfa9897@38 {
 		    compatible = "nxp,tfa9897";
 		    cell-index = <0>;
 	            reg = <0x38>;
 	            tfa,rst-gpio = <&msm_gpio 86 0x00>;
-	            tfa,spk-rcv-switch =  <&msm_gpio 91 0x00>;
-	            vdd-supply = <&pm8916_l6>;
-	        };
-	        tfa9897@40 {
-	            compatible = "nxp,tfa9897";
-		    cell-index = <1>;
-	            reg = <0x40>;
-	            tfa,rst-gpio = <&msm_gpio 88 0x00>;
-	            tfa,spk-rcv-switch = <&msm_gpio 92 0x00>;
 	            vdd-supply = <&pm8916_l6>;
 	        };
 	};
@@ -314,7 +252,6 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&uart_console_sleep>;
 };
-
 
 &spmi_bus {
 	qcom,pm8916@1 {
@@ -440,13 +377,10 @@
 };
 
 #include "dsi-panel-jdi-1080p-video.dtsi"
-/* [PLATFORM]-Mod-BEGIN by TCTNB.CY, PR-789023, 2014/10/14, add r63315 lcd  */
-#include "dsi-panel-r63315-1080p-video.dtsi"
-/* [PLATFORM]-Mod-END by TCTNB.CY*/
 /* [PLATFORM]-Mod-BEGIN by TCTNB.CY, CR-874734, 2015/1/28, add for 2nd LCD*/
 #include "dsi-panel-nt35596-1080p-video.dtsi"
 /* [PLATFORM]-Mod-END by TCTNB.CY,  2015/1/28*/
-
+#include "dsi-panel-nt35596-1080p-truly-video.dtsi"
 /* [PLATFORM]-Mod-BEGIN by TCTNB.CY, CR-932147, 2015/2/13, add new version for 2nd LCD*/
 #include "dsi-panel-nt35596-1080p-video-v03.dtsi"
 /* [PLATFORM]-Mod-END by TCTNB.CY,  2015/2/13*/
@@ -488,7 +422,7 @@
 	pinctrl-0 = <&mdss_dsi_active &mdss_te_active &lcd_power_active>;
 	pinctrl-1 = <&mdss_dsi_suspend &mdss_te_suspend &lcd_power_suspend>;
 /* [PLATFORM]-Mod-END by TCTNB.CY, 2014/12/31*/
-	qcom,dsi-pref-prim-pan = <&dsi_r63315_1080p_vid>;
+	qcom,dsi-pref-prim-pan = <&dsi_nt35596_1080p_truly_vid>;
 
 /* [PLATFORM]-Mod-BEGIN by TCTNB.CY,  2014/11/20, lcd power ic gpio  */
 	qcom,platform-reset-gpio = <&msm_gpio 25 0>;
@@ -497,20 +431,6 @@
 	qcom,platform-lcd-power-gpio-enn = <&msm_gpio 106 0>;
 /* [PLATFORM]-Mod-END by TCTNB.CY*/
 };
-
-/* [PLATFORM]-Mod-BEGIN by TCTNB.CY, PR-789023, 2014/10/14, add r63315 lcd  */
-&dsi_r63315_1080p_vid {
-
-/* [PLATFORM]-Add-BEGIN by TCTNB.CY, PR-852890, 2014/11/27, control backlight brightness */
-	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_pwm";
-	qcom,mdss-dsi-bl-pmic-pwm-frequency = <255>;		/*TCTNB.CY, PR-891676, modify for backlight blink*/
-	qcom,mdss-dsi-bl-pmic-bank-select = <0>;
-	qcom,mdss-dsi-pwm-gpio = <&pm8916_mpps 4 0>;
-/* [PLATFORM]-Add-END by TCTNB.CY, 2014/11/27 */
-
-       qcom,cont-splash-enabled;
-};
-/* [PLATFORM]-Mod-END by TCTNB.CY*/
 
 
 &pm8916_mpps {

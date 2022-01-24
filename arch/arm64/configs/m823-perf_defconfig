@@ -562,7 +562,6 @@ CONFIG_BCM2079X_NFC=m
 #[BUFFIX]-Add-end by zhiqiang.hu,add nfc drirver
 #[BUFFIX]-Add-bgein  by huangshenglin@hoperun, task-1175905 , 1175899 ,1175896 ,1175888 ,2015/12/17,finish sensors drirver
 CONFIG_SENSORS_TSL2772=y
-CONFIG_INPUT_KXTJ9=y
 CONFIG_GYRO_BMG160=y
 #[BUFFIX]-End by huangshenglin@hoperun
 #[PLATFORM]-add by TCTNB.Dandan.Fang,2016/03/31,TASK1887205,for ATT Requirement GSM-BTR-5-7560
@@ -571,6 +570,7 @@ CONFIG_NETFILTER_XT_TARGET_TCPMSS=y
 #[PLATFORM]-Add-END by TCTNB.Dandan.Fang
 CONFIG_LEDS_SN31XX=y
 # [BUGFIX]-Add-BEGIN by zhiqiang.hu,1/13/2016,task1416591, port from FR807274 and 622650
+CONFIG_LEDS_KTD20XX=y
 # Failed to Connect PPTP with Encryption
 CONFIG_NET_KEY=y
 #CONFIG_INET_ESP=y
