@@ -2,7 +2,7 @@ ifeq ($(CONFIG_OF),y)
 
 
 dtb-$(CONFIG_ARCH_MSM8916) += msm8936-mtp-smb1360.dtb \
-	msm8939-mtp-smb1360.dtb
+	msm8939-mtp-smb1360.dtb msm8939-v3.0-mtp-smb1360.dtb
 
 DTB_NAMES := $(subst $\",,$(CONFIG_BUILD_ARM_APPENDED_DTB_IMAGE_NAMES))
 ifneq ($(DTB_NAMES),)

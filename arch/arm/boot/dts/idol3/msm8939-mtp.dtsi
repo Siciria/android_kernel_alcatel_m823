@@ -432,6 +432,19 @@
 /* [PLATFORM]-Mod-END by TCTNB.CY*/
 };
 
+/* [PLATFORM]-Mod-BEGIN by TCTNB.CY, PR-789023, 2014/10/14, add r63315 lcd  */
+&dsi_nt35596_1080p_truly_vid {
+
+/* [PLATFORM]-Add-BEGIN by TCTNB.CY, PR-852890, 2014/11/27, control backlight brightness */
+	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_pwm";
+	qcom,mdss-dsi-bl-pmic-pwm-frequency = <255>;		/*TCTNB.CY, PR-891676, modify for backlight blink*/
+	qcom,mdss-dsi-bl-pmic-bank-select = <0>;
+	qcom,mdss-dsi-pwm-gpio = <&pm8916_mpps 4 0>;
+/* [PLATFORM]-Add-END by TCTNB.CY, 2014/11/27 */
+
+       qcom,cont-splash-enabled;
+};
+/* [PLATFORM]-Mod-END by TCTNB.CY*/
 
 &pm8916_mpps {
 	mpp@a000 { /* MPP 1 */
